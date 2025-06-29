@@ -4,7 +4,6 @@ import { Play, Users, Trophy, Zap, ArrowRight, Copy, Check } from 'lucide-react'
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import ServerStats from '@/components/ServerStats';
 import NewsSection from '@/components/NewsSection';
 
 const Index = () => {
@@ -14,6 +13,11 @@ const Index = () => {
     navigator.clipboard.writeText('92.115.19.173');
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const connectToServer = () => {
+    // FiveM connection URL format
+    window.location.href = 'fivem://connect/92.115.19.173';
   };
 
   const features = [
@@ -35,7 +39,7 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-900">
       <Header />
       
       {/* Hero Section */}
@@ -57,6 +61,7 @@ const Index = () => {
               <Button 
                 size="lg" 
                 className="bg-white text-purple-600 hover:bg-gray-100 font-semibold px-8 py-4 text-lg"
+                onClick={connectToServer}
               >
                 <Play className="w-5 h-5 mr-2" />
                 Începe să Joci
@@ -86,27 +91,14 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Server Stats */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-              Statistici Server
-            </h2>
-            <p className="text-gray-600">Monitorizează în timp real activitatea serverului</p>
-          </div>
-          <ServerStats />
-        </div>
-      </section>
-
       {/* Features Section */}
-      <section className="py-16 bg-gradient-to-br from-purple-50 to-blue-50">
+      <section className="py-16 bg-gray-800">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4 text-gray-900">
+            <h2 className="text-3xl font-bold mb-4 text-white">
               De Ce LoyalHOOD?
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-300 max-w-2xl mx-auto">
               Descoperă caracteristicile care ne fac cel mai bun server de roleplay din România
             </p>
           </div>
@@ -115,14 +107,14 @@ const Index = () => {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in text-center"
+                className="bg-gray-700 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in text-center"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <div className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <feature.icon className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
+                <h3 className="text-xl font-bold text-white mb-4">{feature.title}</h3>
+                <p className="text-gray-300">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -145,6 +137,7 @@ const Index = () => {
             <Button 
               size="lg" 
               className="bg-white text-purple-600 hover:bg-gray-100 font-semibold px-8 py-4"
+              onClick={connectToServer}
             >
               Conectează-te Acum
               <ArrowRight className="w-5 h-5 ml-2" />
