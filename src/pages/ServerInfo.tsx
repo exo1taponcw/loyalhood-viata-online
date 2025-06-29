@@ -35,14 +35,6 @@ const ServerInfo = () => {
     'Bodyguard', 'DJ', 'Barman', 'Chef', 'Fermier'
   ];
 
-  const factions = [
-    { name: 'Poliția Los Santos', members: '45/50', status: 'Recrutează' },
-    { name: 'Los Santos Medical', members: '38/40', status: 'Recrutează' },
-    { name: 'Mafie Italiană', members: '28/30', status: 'Închis' },
-    { name: 'Ballas Gang', members: '22/25', status: 'Recrutează' },
-    { name: 'Los Santos Customs', members: '35/35', status: 'Complet' }
-  ];
-
   return (
     <div className="min-h-screen bg-gray-900">
       <Header />
@@ -161,37 +153,6 @@ const ServerInfo = () => {
               >
                 {job}
               </Badge>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Factions Section */}
-      <section className="py-16 bg-gray-800">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-white">
-            Facțiuni Active
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {factions.map((faction, index) => (
-              <Card key={index} className="bg-gray-700 border-gray-600 hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <CardTitle className="text-lg text-white">{faction.name}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-300">Membri: {faction.members}</span>
-                    <Badge 
-                      variant={faction.status === 'Recrutează' ? 'default' : 
-                              faction.status === 'Complet' ? 'secondary' : 'destructive'}
-                      className={faction.status === 'Recrutează' ? 'bg-green-600' : 
-                                faction.status === 'Complet' ? 'bg-gray-600' : 'bg-red-600'}
-                    >
-                      {faction.status}
-                    </Badge>
-                  </div>
-                </CardContent>
-              </Card>
             ))}
           </div>
         </div>

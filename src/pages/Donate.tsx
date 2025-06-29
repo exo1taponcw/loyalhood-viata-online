@@ -1,5 +1,5 @@
 
-import { Heart, Star, Crown, Zap, Check, CreditCard, Smartphone } from 'lucide-react';
+import { Heart, Shield, Zap, Crown, CreditCard, Smartphone } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -7,88 +7,79 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 const Donate = () => {
-  const donationTiers = [
+  const donationPackages = [
     {
-      name: 'Supporter',
+      id: 1,
+      name: 'Pachet Starter',
       price: '25 RON',
-      icon: Heart,
-      color: 'text-green-600',
-      bgColor: 'bg-green-50',
-      borderColor: 'border-green-200',
-      benefits: [
-        'Tag special în joc [Supporter]',
-        'Acces la comenzi VIP',
-        'Priority support',
-        '50,000$ în joc',
-        'Vehicul starter premium'
-      ]
+      description: 'Perfectul pentru începători',
+      features: [
+        'Vehicul personal starter',
+        '1x Restart character',
+        'Acces prioritar pe server',
+        'Tag special în chat'
+      ],
+      popular: false,
+      color: 'from-blue-500 to-purple-500'
     },
     {
-      name: 'VIP',
+      id: 2,
+      name: 'Pachet Premium',
       price: '50 RON',
-      icon: Star,
-      color: 'text-blue-600',
-      bgColor: 'bg-blue-50',
-      borderColor: 'border-blue-200',
+      description: 'Cel mai popular pachet',
+      features: [
+        'Vehicul premium la alegere',
+        '3x Restart character',
+        'Acces VIP pe server',
+        'Tag VIP în chat',
+        'Acces în zone exclusive'
+      ],
       popular: true,
-      benefits: [
-        'Toate beneficiile Supporter',
-        'Tag special în joc [VIP]',
-        'Acces la zone VIP',
-        '150,000$ în joc',
-        '2 vehicule premium',
-        'Apartament VIP gratuit',
-        'Skin-uri exclusive'
-      ]
+      color: 'from-purple-500 to-pink-500'
     },
     {
-      name: 'Premium',
+      id: 3,
+      name: 'Pachet Elite',
       price: '100 RON',
-      icon: Crown,
-      color: 'text-purple-600',
-      bgColor: 'bg-purple-50',
-      borderColor: 'border-purple-200',
-      benefits: [
-        'Toate beneficiile VIP',
-        'Tag special în joc [Premium]',
-        'Acces complet la toate funcțiile',
-        '500,000$ în joc',
-        '5 vehicule premium',
-        'Casa premium inclusă',
-        'Acces la beta features',
-        'Customizare personaj extinsă'
-      ]
+      description: 'Pentru jucătorii dedicați',
+      features: [
+        'Orice vehicul din joc',
+        '5x Restart character',
+        'Acces Elite pe server',
+        'Tag Elite personalizat',
+        'Acces în toate zonele VIP',
+        'Suport prioritar'
+      ],
+      popular: false,
+      color: 'from-yellow-500 to-orange-500'
     }
   ];
 
-  const oneTimePerks = [
+  const perks = [
     {
-      name: 'Pachet de Bani',
-      items: [
-        { name: '100,000$', price: '15 RON' },
-        { name: '250,000$', price: '30 RON' },
-        { name: '500,000$', price: '50 RON' },
-        { name: '1,000,000$', price: '85 RON' }
-      ]
+      icon: Shield,
+      title: 'Suport pentru Server',
+      description: 'Ajută la menținerea și îmbunătățirea serverului'
     },
     {
-      name: 'Vehicule Premium',
-      items: [
-        { name: 'Lamborghini Huracán', price: '40 RON' },
-        { name: 'BMW M3 Competition', price: '35 RON' },
-        { name: 'Mercedes-AMG GT', price: '45 RON' },
-        { name: 'Audi RS6 Avant', price: '38 RON' }
-      ]
+      icon: Zap,
+      title: 'Beneficii Exclusive',
+      description: 'Acces la conținut și funcții premium'
+    },
+    {
+      icon: Crown,
+      title: 'Status Special',
+      description: 'Recunoaștere în comunitate pentru susținere'
     }
   ];
 
   const paymentMethods = [
-    { name: 'PayPal', icon: '💳', description: 'Plată securizată prin PayPal' },
-    { name: 'Card Bancar', icon: '💳', description: 'Visa, MasterCard, American Express' }
+    { name: 'PayPal', icon: CreditCard, description: 'Plată sigură prin PayPal' },
+    { name: 'Card', icon: CreditCard, description: 'Visa, Mastercard, American Express' }
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-900">
       <Header />
       
       {/* Hero Section */}
@@ -99,110 +90,74 @@ const Donate = () => {
             Susține Serverul
           </h1>
           <p className="text-xl opacity-90 max-w-3xl mx-auto">
-            Ajută-ne să menținem cel mai bun server de roleplay din România
+            Donațiile tale ajută la menținerea și dezvoltarea serverului LoyalHOOD Roleplay
           </p>
         </div>
       </section>
 
-      {/* Why Donate */}
-      <section className="py-16">
+      {/* Why Donate Section */}
+      <section className="py-16 bg-gray-800">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-              De Ce să Donezi?
-            </h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">
-              Donațiile tale ne ajută să menținem serverul online, să dezvoltăm funcționalități noi și să oferim cea mai bună experiență de roleplay.
-            </p>
-          </div>
-
+          <h2 className="text-3xl font-bold text-center mb-12 text-white">
+            De Ce să Donezi?
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardContent className="pt-8">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Zap className="w-8 h-8 text-green-600" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Server Performant</h3>
-                <p className="text-gray-600">Menține serverul cu performanțe de top și fără lag</p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardContent className="pt-8">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Star className="w-8 h-8 text-blue-600" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Funcționalități Noi</h3>
-                <p className="text-gray-600">Dezvoltarea constantă de scripturi și funcționalități</p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardContent className="pt-8">
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Crown className="w-8 h-8 text-purple-600" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Suport Premium</h3>
-                <p className="text-gray-600">Staff dedicat pentru o experiență perfectă</p>
-              </CardContent>
-            </Card>
+            {perks.map((perk, index) => (
+              <Card key={index} className="bg-gray-700 border-gray-600 text-center hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <perk.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <CardTitle className="text-xl text-white">{perk.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-300">{perk.description}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Donation Tiers */}
-      <section className="py-16 bg-gray-50">
+      {/* Donation Packages */}
+      <section className="py-16 bg-gray-900">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4 text-gray-900">
-              Pachete de Donație
-            </h2>
-            <p className="text-gray-600">
-              Alege pachetul care ți se potrivește și primește beneficii exclusive
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {donationTiers.map((tier, index) => (
+          <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+            Pachete de Donații
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {donationPackages.map((pkg) => (
               <Card 
-                key={index} 
-                className={`relative hover:shadow-xl transition-all duration-300 ${tier.borderColor} ${
-                  tier.popular ? 'border-2 scale-105' : 'border'
+                key={pkg.id} 
+                className={`relative bg-gray-800 border-gray-600 hover:shadow-xl transition-all duration-300 ${
+                  pkg.popular ? 'ring-2 ring-purple-500 scale-105' : ''
                 }`}
               >
-                {tier.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <Badge className="bg-gradient-primary text-white px-4 py-1">
-                      Cel mai popular
-                    </Badge>
-                  </div>
+                {pkg.popular && (
+                  <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-600 text-white">
+                    Cel mai popular
+                  </Badge>
                 )}
-                
                 <CardHeader className="text-center">
-                  <div className={`w-16 h-16 ${tier.bgColor} rounded-full flex items-center justify-center mx-auto mb-4`}>
-                    <tier.icon className={`w-8 h-8 ${tier.color}`} />
+                  <div className={`w-20 h-20 bg-gradient-to-r ${pkg.color} rounded-full flex items-center justify-center mx-auto mb-4`}>
+                    <Crown className="w-10 h-10 text-white" />
                   </div>
-                  <CardTitle className="text-2xl font-bold text-gray-900">
-                    {tier.name}
-                  </CardTitle>
-                  <div className="text-3xl font-bold text-purple-600">
-                    {tier.price}
-                  </div>
+                  <CardTitle className="text-2xl font-bold text-white">{pkg.name}</CardTitle>
+                  <div className="text-3xl font-bold text-purple-400 mb-2">{pkg.price}</div>
+                  <p className="text-gray-300">{pkg.description}</p>
                 </CardHeader>
-                
                 <CardContent>
-                  <ul className="space-y-3 mb-8">
-                    {tier.benefits.map((benefit, benefitIndex) => (
-                      <li key={benefitIndex} className="flex items-start space-x-3">
-                        <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-700">{benefit}</span>
+                  <ul className="space-y-3 mb-6">
+                    {pkg.features.map((feature, index) => (
+                      <li key={index} className="flex items-center text-gray-300">
+                        <div className="w-2 h-2 bg-purple-500 rounded-full mr-3 flex-shrink-0"></div>
+                        {feature}
                       </li>
                     ))}
                   </ul>
-                  
                   <Button 
-                    className={`w-full ${tier.popular ? 'bg-gradient-primary' : ''} hover:shadow-lg transition-all duration-300`}
-                    variant={tier.popular ? 'default' : 'outline'}
+                    className={`w-full bg-gradient-to-r ${pkg.color} hover:shadow-lg transition-all duration-300 text-white font-semibold`}
                   >
                     Donează Acum
                   </Button>
@@ -213,39 +168,20 @@ const Donate = () => {
         </div>
       </section>
 
-      {/* One-time Perks */}
-      <section className="py-16">
+      {/* Payment Methods */}
+      <section className="py-16 bg-gray-800">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-              Achiziții Individuale
-            </h2>
-            <p className="text-gray-600">
-              Achiziționează doar ceea ce ai nevoie
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {oneTimePerks.map((category, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <CardTitle className="text-xl font-bold text-gray-900">
-                    {category.name}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    {category.items.map((item, itemIndex) => (
-                      <div key={itemIndex} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                        <span className="font-medium text-gray-900">{item.name}</span>
-                        <div className="flex items-center space-x-3">
-                          <span className="text-lg font-bold text-purple-600">{item.price}</span>
-                          <Button size="sm" variant="outline">
-                            Cumpără
-                          </Button>
-                        </div>
-                      </div>
-                    ))}
+          <h2 className="text-3xl font-bold text-center mb-12 text-white">
+            Metode de Plată Sigure
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+            {paymentMethods.map((method, index) => (
+              <Card key={index} className="bg-gray-700 border-gray-600 hover:shadow-lg transition-shadow">
+                <CardContent className="flex items-center p-6">
+                  <method.icon className="w-8 h-8 text-purple-400 mr-4" />
+                  <div>
+                    <h3 className="font-semibold text-lg text-white">{method.name}</h3>
+                    <p className="text-gray-300 text-sm">{method.description}</p>
                   </div>
                 </CardContent>
               </Card>
@@ -254,39 +190,47 @@ const Donate = () => {
         </div>
       </section>
 
-      {/* Payment Methods */}
-      <section className="py-16 bg-gray-50">
+      {/* FAQ Section */}
+      <section className="py-16 bg-gray-900">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4 text-gray-900">
-              Metode de Plată Securizate
-            </h2>
-            <p className="text-gray-600">
-              Alege metoda de plată care îți convine
-            </p>
+          <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+            Întrebări Frecvente
+          </h2>
+          
+          <div className="max-w-3xl mx-auto space-y-6">
+            <Card className="bg-gray-800 border-gray-600">
+              <CardHeader>
+                <CardTitle className="text-white">Cât timp durează să primesc beneficiile?</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-300">
+                  Beneficiile sunt acordate automat în maxim 30 de minute după confirmarea plății.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="bg-gray-800 border-gray-600">
+              <CardHeader>
+                <CardTitle className="text-white">Pot refuza o donație?</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-300">
+                  Donațiile sunt finale și nu pot fi rambursate, cu excepția problemelor tehnice.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="bg-gray-800 border-gray-600">
+              <CardHeader>
+                <CardTitle className="text-white">Beneficiile sunt permanente?</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-300">
+                  Da, toate beneficiile sunt permanente pe durata existenței contului tău.
+                </p>
+              </CardContent>
+            </Card>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
-            {paymentMethods.map((method, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow text-center">
-                <CardContent className="pt-8">
-                  <div className="text-4xl mb-4">{method.icon}</div>
-                  <h3 className="text-xl font-semibold mb-2">{method.name}</h3>
-                  <p className="text-gray-600">{method.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Disclaimer */}
-      <section className="py-8 bg-yellow-50 border-y border-yellow-200">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-sm text-yellow-800">
-            <strong>Notă importantă:</strong> Donațiile sunt voluntare și nu pot fi rambursate. 
-            Toate achizițiile sunt pentru bunuri virtuale în cadrul jocului și nu au valoare în lumea reală.
-          </p>
         </div>
       </section>
 

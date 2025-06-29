@@ -1,5 +1,5 @@
 
-import { Calendar, Clock, MapPin, Users, Trophy, Star } from 'lucide-react';
+import { Calendar, Clock, MapPin, Users, Trophy } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -46,27 +46,6 @@ const Events = () => {
     }
   ];
 
-  const pastEvents = [
-    {
-      id: 4,
-      title: 'Concurs de Tuning Auto',
-      description: 'Cel mai frumos vehicul modificat a câștigat premiul mare',
-      date: '2025-01-15',
-      winner: 'PlayerName123',
-      prize: '$300,000',
-      participants: '67'
-    },
-    {
-      id: 5,
-      title: 'Vânătoare de Comori',
-      description: 'Aventură prin întreg Los Santos pentru găsirea comorii ascunse',
-      date: '2025-01-12',
-      winner: 'RoleplayMaster',
-      prize: '$200,000',
-      participants: '89'
-    }
-  ];
-
   const eventTypes = [
     { name: 'Cursă', color: 'bg-red-500', count: 15 },
     { name: 'Casino', color: 'bg-yellow-500', count: 8 },
@@ -77,17 +56,17 @@ const Events = () => {
 
   const getEventTypeColor = (type: string) => {
     const colors: { [key: string]: string } = {
-      'Cursă': 'bg-red-100 text-red-800',
-      'Casino': 'bg-yellow-100 text-yellow-800',
-      'Roleplay': 'bg-green-100 text-green-800',
-      'Competiție': 'bg-blue-100 text-blue-800',
-      'Aventură': 'bg-purple-100 text-purple-800'
+      'Cursă': 'bg-red-900/50 text-red-300',
+      'Casino': 'bg-yellow-900/50 text-yellow-300',
+      'Roleplay': 'bg-green-900/50 text-green-300',
+      'Competiție': 'bg-blue-900/50 text-blue-300',
+      'Aventură': 'bg-purple-900/50 text-purple-300'
     };
-    return colors[type] || 'bg-gray-100 text-gray-800';
+    return colors[type] || 'bg-gray-900/50 text-gray-300';
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-900">
       <Header />
       
       {/* Hero Section */}
@@ -104,17 +83,17 @@ const Events = () => {
       </section>
 
       {/* Event Types Stats */}
-      <section className="py-12 bg-gray-50">
+      <section className="py-12 bg-gray-800">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {eventTypes.map((type, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
+              <Card key={index} className="text-center hover:shadow-lg transition-shadow bg-gray-700 border-gray-600">
                 <CardContent className="pt-6">
                   <div className={`w-12 h-12 ${type.color} rounded-full flex items-center justify-center mx-auto mb-3`}>
                     <span className="text-white font-bold text-lg">{type.count}</span>
                   </div>
-                  <p className="font-semibold text-gray-900">{type.name}</p>
-                  <p className="text-sm text-gray-600">Evenimente</p>
+                  <p className="font-semibold text-white">{type.name}</p>
+                  <p className="text-sm text-gray-300">Evenimente</p>
                 </CardContent>
               </Card>
             ))}
@@ -123,52 +102,52 @@ const Events = () => {
       </section>
 
       {/* Upcoming Events */}
-      <section className="py-16">
+      <section className="py-16 bg-gray-900">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+          <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
             Evenimente Viitoare
           </h2>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
             {upcomingEvents.map((event) => (
-              <Card key={event.id} className="hover:shadow-xl transition-all duration-300 border-l-4 border-l-purple-500">
+              <Card key={event.id} className="hover:shadow-xl transition-all duration-300 border-l-4 border-l-purple-500 bg-gray-800 border-gray-600">
                 <CardHeader>
                   <div className="flex justify-between items-start mb-2">
                     <Badge className={getEventTypeColor(event.type)}>
                       {event.type}
                     </Badge>
-                    <Badge variant="outline" className="text-green-600 border-green-600">
+                    <Badge variant="outline" className="text-green-400 border-green-400 bg-green-900/20">
                       Activ
                     </Badge>
                   </div>
-                  <CardTitle className="text-xl font-bold text-gray-900">
+                  <CardTitle className="text-xl font-bold text-white">
                     {event.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600 mb-4">
+                  <p className="text-gray-300 mb-4">
                     {event.description}
                   </p>
                   
                   <div className="space-y-3 mb-6">
-                    <div className="flex items-center text-sm text-gray-600">
-                      <Calendar className="w-4 h-4 mr-2 text-purple-600" />
+                    <div className="flex items-center text-sm text-gray-300">
+                      <Calendar className="w-4 h-4 mr-2 text-purple-400" />
                       {new Date(event.date).toLocaleDateString('ro-RO')}
                     </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <Clock className="w-4 h-4 mr-2 text-blue-600" />
+                    <div className="flex items-center text-sm text-gray-300">
+                      <Clock className="w-4 h-4 mr-2 text-blue-400" />
                       {event.time}
                     </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <MapPin className="w-4 h-4 mr-2 text-red-600" />
+                    <div className="flex items-center text-sm text-gray-300">
+                      <MapPin className="w-4 h-4 mr-2 text-red-400" />
                       {event.location}
                     </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <Users className="w-4 h-4 mr-2 text-green-600" />
+                    <div className="flex items-center text-sm text-gray-300">
+                      <Users className="w-4 h-4 mr-2 text-green-400" />
                       {event.participants} participanți
                     </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <Trophy className="w-4 h-4 mr-2 text-yellow-600" />
+                    <div className="flex items-center text-sm text-gray-300">
+                      <Trophy className="w-4 h-4 mr-2 text-yellow-400" />
                       Premiu: {event.prize}
                     </div>
                   </div>
@@ -183,66 +162,20 @@ const Events = () => {
         </div>
       </section>
 
-      {/* Past Events */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
-            Evenimente Trecute
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {pastEvents.map((event) => (
-              <Card key={event.id} className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <CardTitle className="text-xl font-bold text-gray-900 flex items-center">
-                    <Star className="w-5 h-5 mr-2 text-yellow-500" />
-                    {event.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-4">
-                    {event.description}
-                  </p>
-                  
-                  <div className="grid grid-cols-2 gap-4 p-4 bg-gray-50 rounded-lg">
-                    <div>
-                      <p className="text-sm text-gray-600">Câștigător</p>
-                      <p className="font-semibold text-purple-600">{event.winner}</p>
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-600">Premiu</p>
-                      <p className="font-semibold text-green-600">{event.prize}</p>
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-600">Data</p>
-                      <p className="font-semibold">{new Date(event.date).toLocaleDateString('ro-RO')}</p>
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-600">Participanți</p>
-                      <p className="font-semibold">{event.participants}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Event Rules */}
-      <section className="py-16">
+      <section className="py-16 bg-gray-800">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+            <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
               Reguli Evenimente
             </h2>
             
-            <Card>
+            <Card className="bg-gray-700 border-gray-600">
               <CardContent className="pt-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div>
-                    <h3 className="text-xl font-semibold mb-4 text-gray-900">Reguli Generale</h3>
-                    <ul className="space-y-2 text-gray-700">
+                    <h3 className="text-xl font-semibold mb-4 text-white">Reguli Generale</h3>
+                    <ul className="space-y-2 text-gray-300">
                       <li className="flex items-start space-x-2">
                         <span className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></span>
                         <span>Respectă toate regulile serverului</span>
@@ -263,8 +196,8 @@ const Events = () => {
                   </div>
                   
                   <div>
-                    <h3 className="text-xl font-semibold mb-4 text-gray-900">Premii & Recompense</h3>
-                    <ul className="space-y-2 text-gray-700">
+                    <h3 className="text-xl font-semibold mb-4 text-white">Premii & Recompense</h3>
+                    <ul className="space-y-2 text-gray-300">
                       <li className="flex items-start space-x-2">
                         <span className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></span>
                         <span>Premiile sunt acordate automat</span>
