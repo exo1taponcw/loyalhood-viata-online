@@ -2,12 +2,14 @@
 import { useState } from 'react';
 import { Play, Users, Trophy, Zap, ArrowRight, Copy, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import NewsSection from '@/components/NewsSection';
 
 const Index = () => {
   const [copied, setCopied] = useState(false);
+  const navigate = useNavigate();
   
   const copyServerIP = () => {
     navigator.clipboard.writeText('92.115.19.173');
@@ -18,6 +20,10 @@ const Index = () => {
   const connectToServer = () => {
     // FiveM connection URL format
     window.location.href = 'fivem://connect/92.115.19.173';
+  };
+
+  const goToRules = () => {
+    navigate('/rules');
   };
 
   const features = [
@@ -146,6 +152,7 @@ const Index = () => {
               size="lg" 
               variant="outline" 
               className="border-white text-white hover:bg-white hover:text-purple-600 px-8 py-4"
+              onClick={goToRules}
             >
               Vezi Regulile
             </Button>
